@@ -1,0 +1,24 @@
+{
+  "name": "scientfic-calculator-ts",
+  "version": "1.0.0",
+  "description": "## This Project is an implementation of scientific calulator. It is build using HTML, CSS & TS with focus on:",
+  "main": "index.js",
+  "scripts": {
+    "dev":"parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohitpuri-codes/TS-scientific-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohitpuri-codes/TS-scientific-calculator/issues"
+  },
+  "homepage": "https://github.com/mohitpuri-codes/TS-scientific-calculator#readme",
+  "devDependencies": {
+    "parcel": "^2.14.1",
+    "typescript": "^5.8.2"
+  }
+}
