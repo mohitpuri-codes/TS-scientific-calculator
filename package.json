@@ -4,7 +4,8 @@
   "description": "## This Project is an implementation of scientific calulator. It is build using HTML, CSS & TS with focus on:",
   "main": "index.js",
   "scripts": {
-    "dev":"parcel src/index.html"
+    "dev":"parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
   },
   "repository": {
     "type": "git",
