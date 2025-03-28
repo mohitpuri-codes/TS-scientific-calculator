@@ -2,9 +2,9 @@
   "name": "scientfic-calculator-ts",
   "version": "1.0.0",
   "description": "## This Project is an implementation of scientific calulator. It is build using HTML, CSS & TS with focus on:",
-  "main": "index.js",
   "scripts": {
-    "dev":"parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mohitpuri-codes/TS-scientific-calculator#readme",
   "devDependencies": {
     "parcel": "^2.14.1",
+    "svgo": "^3.3.2",
     "typescript": "^5.8.2"
   }
 }
