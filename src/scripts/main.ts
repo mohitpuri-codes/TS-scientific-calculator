@@ -68,7 +68,7 @@ if (functionalDropDown)
  * @description Gets the current input string.
  * @return {string} The input string.
  */
-export function getInputStr(): string {
+export function getInputStr() {
   return inputStr;
 }
 
@@ -84,7 +84,7 @@ export function setInputStr(str: string) {
  * @description Gets the current display string.
  * @return {string} The display string.
  */
-export function getDisplayStr(): string {
+export function getDisplayStr() {
   return displayStr;
 }
 

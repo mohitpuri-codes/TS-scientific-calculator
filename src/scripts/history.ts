@@ -44,7 +44,7 @@ function closeHistoryOnClickOutside(e: Event) {
 /**
  * @description Toggles the visibility of the history panel.
  */
-function toggleHistory(): void {
+function toggleHistory() {
   const historyContainer: HTMLDivElement | null =
     document.querySelector(".history-container");
   if (historyContainer)
@@ -57,7 +57,7 @@ function toggleHistory(): void {
  * @param {string} expression - The mathematical expression
  * @param {string|number} result - The result of the expression
  */
-export function addToHistory(expression: string, result: string): void {
+export function addToHistory(expression: string, result: string) {
   if (history.length >= 5) {
     history.shift();
   }
@@ -71,7 +71,7 @@ export function addToHistory(expression: string, result: string): void {
 /**
  * @description Updates the history UI with the latest calculations.
  */
-function updateHistoryUI(): void {
+function updateHistoryUI() {
   const historyList: HTMLUListElement | null =
     document.querySelector(".history-list");
   if (historyList) {

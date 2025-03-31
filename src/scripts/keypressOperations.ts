@@ -25,7 +25,7 @@ document.addEventListener("keydown", backSpaceEventHandler);
  * @description Event listner for backspace key press to handle input deletion.
  * @param {KeyboardEvent} e - The keypress event object.
  */
-function backSpaceEventHandler(e: KeyboardEvent): void {
+function backSpaceEventHandler(e: KeyboardEvent) {
   const inputStr: string = getInputStr();
   const displayStr: string = getDisplayStr();
   if (e.key === BACKSPACE_KEY) {
@@ -41,7 +41,7 @@ function backSpaceEventHandler(e: KeyboardEvent): void {
  * @description Event listener for keypress events.
  * @param {KeyboardEvent} e - The keypress event object.
  */
-function keyPressEventHandler(e: KeyboardEvent): void {
+function keyPressEventHandler(e: KeyboardEvent) {
   const inputStr: string = getInputStr();
   const allowedKeyPress = new Set<string>([
     "Enter",

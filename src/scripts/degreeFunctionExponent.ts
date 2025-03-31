@@ -33,7 +33,7 @@ function degree() {
   if (degreeBtn) degreeBtn!.textContent = isDegree ? "DEG" : "RAD";
 }
 
-export function getDegree(): boolean {
+export function getDegree() {
   return isDegree;
 }
 
