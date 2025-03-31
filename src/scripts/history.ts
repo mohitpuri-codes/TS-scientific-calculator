@@ -5,9 +5,10 @@
 let history: string[] = JSON.parse(localStorage.getItem("calcHistory")!) || [];
 
 // Event listeners
-document
-  .querySelector(".history-btn")!
-  .addEventListener("click", toggleHistory);
+
+const historyBtnListner = document.querySelector(".history-btn");
+if (historyBtnListner)
+  historyBtnListner?.addEventListener("click", toggleHistory);
 document.addEventListener("click", closeHistoryOnClickOutside);
 
 /**
@@ -17,11 +18,14 @@ document.addEventListener("click", closeHistoryOnClickOutside);
 function closeHistoryOnClickOutside(e: Event) {
   let target = e.target;
   if (target instanceof HTMLElement) {
-    let historyContainer: HTMLDivElement =
-      document.querySelector(".history-container")!;
-    let historyBtn: HTMLButtonElement = document.querySelector(".history-btn")!;
+    let historyContainer: HTMLDivElement | null =
+      document.querySelector(".history-container");
+    let historyBtn: HTMLButtonElement | null =
+      document.querySelector(".history-btn");
 
     if (
+      historyContainer &&
+      historyBtn &&
       historyContainer.style.display === "block" &&
       !historyContainer.contains(target) &&
       !historyBtn.contains(target)
@@ -35,10 +39,11 @@ function closeHistoryOnClickOutside(e: Event) {
  * @description Toggles the visibility of the history panel.
  */
 function toggleHistory(): void {
-  let historyContainer: HTMLDivElement =
-    document.querySelector(".history-container")!;
-  historyContainer.style.display =
-    historyContainer.style.display === "block" ? "none " : "block";
+  let historyContainer: HTMLDivElement | null =
+    document.querySelector(".history-container");
+  if (historyContainer)
+    historyContainer.style.display =
+      historyContainer.style.display === "block" ? "none " : "block";
 }
 
 /**
@@ -61,15 +66,18 @@ export function addToHistory(expression: string, result: string): void {
  * @description Updates the history UI with the latest calculations.
  */
 function updateHistoryUI(): void {
-  let historyList: HTMLUListElement = document.querySelector(".history-list")!;
-  historyList.innerHTML = "";
-  const historyFragment: DocumentFragment = document.createDocumentFragment();
-  history.forEach((entry) => {
-    let li: HTMLLIElement = document.createElement("li");
-    li.textContent = entry;
-    historyFragment?.appendChild(li);
-  });
-  historyList.appendChild(historyFragment);
+  let historyList: HTMLUListElement | null =
+    document.querySelector(".history-list");
+  if (historyList) {
+    historyList.innerHTML = "";
+    const historyFragment: DocumentFragment = document.createDocumentFragment();
+    history.forEach((entry) => {
+      let li: HTMLLIElement = document.createElement("li");
+      li.textContent = entry;
+      historyFragment?.appendChild(li);
+    });
+    historyList.appendChild(historyFragment);
+  }
 }
 
 // Load history on page load
