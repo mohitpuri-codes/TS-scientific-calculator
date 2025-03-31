@@ -20,16 +20,17 @@ let isExponential: boolean = false; // Track the scientific notation
 /**
  * @description Adds event listener to handle degree and scientific notation toggle
  */
-document
-  .querySelector(".calulate-degree")!
-  .addEventListener("click", degreeClickEventHandler);
+
+const calcDegree = document.querySelector(".calulate-degree");
+if (calcDegree) calcDegree.addEventListener("click", degreeClickEventHandler);
 
 /**
  * @description Toggles between degrees and radians mode
  */
 function degree() {
   isDegree = !isDegree;
-  document.querySelector("#deg")!.textContent = isDegree ? "DEG" : "RAD";
+  const degreeBtn = document.querySelector("#deg");
+  if (degreeBtn) degreeBtn!.textContent = isDegree ? "DEG" : "RAD";
 }
 
 export function getDegree(): boolean {
@@ -43,7 +44,7 @@ export function getDegree(): boolean {
 function degreeClickEventHandler(e: Event) {
   const target = e.target;
   if (target instanceof HTMLElement) {
-    let currentKey = target.closest("button")?.value;
+    const currentKey = target.closest("button")?.value;
 
     switch (currentKey) {
       case DEGREE:
@@ -51,8 +52,8 @@ function degreeClickEventHandler(e: Event) {
         break;
       case FE:
         toggleExponential();
-      default:
         break;
+      default:
     }
   }
 }
@@ -61,15 +62,15 @@ function degreeClickEventHandler(e: Event) {
  * @description Toggles the displayed value between standard and scientific notation
  */
 export function toggleExponential() {
-  let inputStr: string = getInputStr();
+  const inputStr: string = getInputStr();
   if (!inputStr || isNaN(Number(inputStr))) return;
 
-  let num: number = Number(inputStr);
+  const num: number = Number(inputStr);
   isExponential = !isExponential;
 
-  let exponent: string[] = num.toExponential().split("e");
+  const exponent: string[] = num.toExponential().split("e");
   let updatedInputStr: string = `${exponent[0]}*10**${Number(exponent[1])}`;
-  let updatedDisplayStr: string = `${exponent[0]}*10^${Number(exponent[1])}`;
+  const updatedDisplayStr: string = `${exponent[0]}*10^${Number(exponent[1])}`;
   if (isExponential) {
     setInputStr(updatedInputStr);
     setDisplayStr(updatedDisplayStr);

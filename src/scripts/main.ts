@@ -49,18 +49,20 @@ import {
 import { toggleExponential } from "./degreeFunctionExponent.ts";
 let inputStr: string = "";
 let displayStr: string = "";
-let display: HTMLDivElement = document.querySelector(".display")!;
+const display: HTMLDivElement = document.querySelector(".display")!;
 
 // Event Listeners.
-document
-  .querySelector(".keys")!
-  .addEventListener("click", keyClickEventHandler);
-document
-  .querySelector("#trigonometryDropdown")!
-  .addEventListener("click", keyClickEventHandler);
-document
-  .querySelector("#functionDropdown")!
-  .addEventListener("click", keyClickEventHandler);
+
+const keys = document.querySelector(".keys");
+if (keys) keys.addEventListener("click", keyClickEventHandler);
+
+const trigonoDropDown = document.querySelector("#trigonometryDropdown");
+if (trigonoDropDown)
+  trigonoDropDown.addEventListener("click", keyClickEventHandler);
+
+const functionalDropDown = document.querySelector("#functionDropdown");
+if (functionalDropDown)
+  functionalDropDown.addEventListener("click", keyClickEventHandler);
 
 /**
  * @description Gets the current input string.
@@ -124,7 +126,7 @@ export function updateDisplay() {
 function keyClickEventHandler(e: Event) {
   const target = e.target;
   if (target instanceof HTMLElement) {
-    let currentKey = target.closest("button")?.value;
+    const currentKey = target.closest("button")?.value;
     if (!currentKey) return;
 
     switch (currentKey) {
@@ -206,26 +208,30 @@ function keyClickEventHandler(e: Event) {
 }
 
 // Event Listeners
-document
-  .querySelector("#trigonometry-dropdown")!
-  .addEventListener("click", trigonometryFunction);
+const trigonometryDropDownFucntion = document.querySelector(
+  "#trigonometry-dropdown"
+);
+if (trigonometryDropDownFucntion)
+  trigonometryDropDownFucntion.addEventListener("click", trigonometryFunction);
 
-document
-  .querySelector("#functional-dropdown")!
-  .addEventListener("click", functionDropdown);
+const functionalDropdownFunction = document.querySelector(
+  "#functional-dropdown"
+);
+if (functionalDropdownFunction)
+  functionalDropdownFunction.addEventListener("click", functionDropdown);
 
 /**
  * @description Toggles the visibility of the trigonometry function dropdown.
  */
 function trigonometryFunction() {
-  document.getElementById("trigonometryDropdown")!.classList.toggle("show");
+  document.getElementById("trigonometryDropdown")?.classList.toggle("show");
 }
 
 /**
  * @description Toggles the visibility of the functions dropdown.
  */
 function functionDropdown() {
-  document.getElementById("functionDropdown")!.classList.toggle("showFn");
+  document.getElementById("functionDropdown")?.classList.toggle("showFn");
 }
 
 /**
@@ -233,13 +239,13 @@ function functionDropdown() {
  * @param {Event} event - The event object
  */
 window.onclick = function (event: Event) {
-  let trigDropdown: HTMLDivElement = document.querySelector(
+  const trigDropdown: HTMLDivElement = document.querySelector(
     "#trigonometryDropdown"
   )!;
-  let funcDropdown = document.querySelector("#functionDropdown")!;
+  const funcDropdown = document.querySelector("#functionDropdown");
 
   const target = event.target;
-  if (target instanceof HTMLElement) {
+  if (target instanceof HTMLElement && funcDropdown) {
     if (!target.closest(".dropbtn")) {
       if (trigDropdown.classList.contains("show")) {
         trigDropdown.classList.remove("show");

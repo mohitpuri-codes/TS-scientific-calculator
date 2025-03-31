@@ -20,7 +20,7 @@ if (memoryContainer) {
 }
 
 // Initialize memory from localStorage.
-let memoryStr: string | null = localStorage.getItem(CALCULATOR_MEMORY);
+const memoryStr: string | null = localStorage.getItem(CALCULATOR_MEMORY);
 let memory: number | null = memoryStr !== null ? parseFloat(memoryStr) : null;
 
 /**
@@ -51,8 +51,8 @@ function memoryClear() {
  * @description Adds the current input value to the stored memory.
  */
 function memoryAdd() {
-  let inputStr = getInputStr();
-  let currentValue = parseFloat(inputStr) || 0;
+  const inputStr = getInputStr();
+  const currentValue = parseFloat(inputStr) || 0;
   memory = (memory ?? 0) + currentValue;
   localStorage.setItem(CALCULATOR_MEMORY, memory.toString());
 }
@@ -61,8 +61,8 @@ function memoryAdd() {
  * @description Subtracts the current input value to the stored memory.
  */
 function memorySub() {
-  let inputStr = getInputStr();
-  let currentValue = parseFloat(inputStr) || 0;
+  const inputStr = getInputStr();
+  const currentValue = parseFloat(inputStr) || 0;
   memory = (memory ?? 0) - currentValue;
   localStorage.setItem(CALCULATOR_MEMORY, memory.toString());
 }
@@ -71,8 +71,8 @@ function memorySub() {
  * @description Saves the current input value into memory.
  */
 function memorySaveCurrent() {
-  let inputStr = getInputStr();
-  let currentValue = parseFloat(inputStr);
+  const inputStr = getInputStr();
+  const currentValue = parseFloat(inputStr);
   if (!isNaN(currentValue)) {
     memory = currentValue;
     localStorage.setItem(CALCULATOR_MEMORY, memory.toString());
@@ -87,7 +87,7 @@ function memorySaveCurrent() {
 function handleMemoryClick(e: Event) {
   const target = e.target;
   if (target instanceof HTMLElement) {
-    let currentKey = target.closest("button")?.textContent!.trim();
+    const currentKey = target.closest("button")?.textContent!.trim();
     if (!currentKey) return;
 
     switch (currentKey) {
@@ -117,7 +117,7 @@ function handleMemoryClick(e: Event) {
  * @description Updates the appearance of memory buttons (MC and MR) based on memory availability.
  */
 function updateMemoryButtons() {
-  let hasMemory = localStorage.getItem(CALCULATOR_MEMORY) !== null;
+  const hasMemory = localStorage.getItem(CALCULATOR_MEMORY) !== null;
   document
     .querySelectorAll(
       '.memory-clear-container button[value="MC"], .memory-clear-container button[value="MR"]'

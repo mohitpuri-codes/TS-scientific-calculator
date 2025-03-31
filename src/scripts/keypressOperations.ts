@@ -26,12 +26,12 @@ document.addEventListener("keydown", backSpaceEventHandler);
  * @param {KeyboardEvent} e - The keypress event object.
  */
 function backSpaceEventHandler(e: KeyboardEvent): void {
-  let inputStr: string = getInputStr();
-  let displayStr: string = getDisplayStr();
+  const inputStr: string = getInputStr();
+  const displayStr: string = getDisplayStr();
   if (e.key === BACKSPACE_KEY) {
-    let updatedInputStr: string = inputStr.slice(0, -1);
+    const updatedInputStr: string = inputStr.slice(0, -1);
     setInputStr(updatedInputStr);
-    let updatedDisplayStr: string = displayStr.slice(0, -1);
+    const updatedDisplayStr: string = displayStr.slice(0, -1);
     setDisplayStr(updatedDisplayStr);
     updateDisplay();
   }
@@ -42,8 +42,8 @@ function backSpaceEventHandler(e: KeyboardEvent): void {
  * @param {KeyboardEvent} e - The keypress event object.
  */
 function keyPressEventHandler(e: KeyboardEvent): void {
-  let inputStr: string = getInputStr();
-  let allowedKeyPress = new Set<string>([
+  const inputStr: string = getInputStr();
+  const allowedKeyPress = new Set<string>([
     "Enter",
     "Backspace",
     "(",
@@ -55,7 +55,7 @@ function keyPressEventHandler(e: KeyboardEvent): void {
     ".",
     "=",
   ]);
-  let key: string = e.key;
+  const key: string = e.key;
 
   if ((key >= "0" && key <= "9") || allowedKeyPress.has(key)) {
     if (key === ENTER || key === EQUAL) {

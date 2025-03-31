@@ -1,8 +1,10 @@
+import { CALCULATOR_HISTORY } from "./constants";
+
 /**
  * @description Retrives calculation history from localStorage or initializes an empty array.
  * @type {string[]}
  */
-const localCalcHistory = localStorage.getItem("calcHistory");
+const localCalcHistory = localStorage.getItem(CALCULATOR_HISTORY);
 let history: string[] = [];
 if (localCalcHistory) {
   history = JSON.parse(localCalcHistory) || [];
@@ -20,11 +22,11 @@ document.addEventListener("click", closeHistoryOnClickOutside);
  * @param {*} e - The click event object.
  */
 function closeHistoryOnClickOutside(e: Event) {
-  let target = e.target;
+  const target = e.target;
   if (target instanceof HTMLElement) {
-    let historyContainer: HTMLDivElement | null =
+    const historyContainer: HTMLDivElement | null =
       document.querySelector(".history-container");
-    let historyBtn: HTMLButtonElement | null =
+    const historyBtn: HTMLButtonElement | null =
       document.querySelector(".history-btn");
 
     if (
@@ -43,7 +45,7 @@ function closeHistoryOnClickOutside(e: Event) {
  * @description Toggles the visibility of the history panel.
  */
 function toggleHistory(): void {
-  let historyContainer: HTMLDivElement | null =
+  const historyContainer: HTMLDivElement | null =
     document.querySelector(".history-container");
   if (historyContainer)
     historyContainer.style.display =
@@ -61,7 +63,7 @@ export function addToHistory(expression: string, result: string): void {
   }
 
   history.push(`${expression} = ${result}`);
-  localStorage.setItem("calcHistory", JSON.stringify(history));
+  localStorage.setItem(CALCULATOR_HISTORY, JSON.stringify(history));
 
   updateHistoryUI();
 }
@@ -70,13 +72,13 @@ export function addToHistory(expression: string, result: string): void {
  * @description Updates the history UI with the latest calculations.
  */
 function updateHistoryUI(): void {
-  let historyList: HTMLUListElement | null =
+  const historyList: HTMLUListElement | null =
     document.querySelector(".history-list");
   if (historyList) {
     historyList.innerHTML = "";
     const historyFragment: DocumentFragment = document.createDocumentFragment();
     history.forEach((entry) => {
-      let li: HTMLLIElement = document.createElement("li");
+      const li: HTMLLIElement = document.createElement("li");
       li.textContent = entry;
       historyFragment?.appendChild(li);
     });

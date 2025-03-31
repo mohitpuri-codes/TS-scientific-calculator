@@ -18,7 +18,7 @@ let isSecondFunction: boolean = false;
  */
 export function equals() {
   let inputStr: string = getInputStr();
-  let displayStr: string = getDisplayStr();
+  const displayStr: string = getDisplayStr();
   try {
     if (inputStr === ERROR_INPUT || inputStr === ERROR) {
       return;
@@ -32,6 +32,7 @@ export function equals() {
     setInputStr(result.toString());
     setDisplayStr(getInputStr());
   } catch (error) {
+    console.error(error);
     setInputStr(ERROR);
     setDisplayStr(ERROR);
   }
@@ -52,8 +53,8 @@ export function clearCalc() {
  * @description Removes the last character from the input and display strings.
  */
 export function backspace() {
-  let inputStr: string = getInputStr();
-  let displayStr: string = getDisplayStr();
+  const inputStr: string = getInputStr();
+  const displayStr: string = getDisplayStr();
   if (inputStr.endsWith("**")) {
     setInputStr(inputStr.slice(0, -2));
     setDisplayStr(displayStr.slice(0, -1));
@@ -87,8 +88,10 @@ export function squareRoot() {
  * @description Handles sine function calculation with degree or radian mode.
  */
 export function sine() {
-  let isDegree: boolean = getDegree();
-  let checkDegree: string = isDegree ? "Math.sin((Math.PI/180)*" : "Math.sin(";
+  const isDegree: boolean = getDegree();
+  const checkDegree: string = isDegree
+    ? "Math.sin((Math.PI/180)*"
+    : "Math.sin(";
   setAndAddInputStr(checkDegree);
   setAndAddDisplayStr("sin(");
   updateDisplay();
@@ -98,8 +101,10 @@ export function sine() {
  * @description Handles cosine function calculation with degree or radian mode.
  */
 export function cosine() {
-  let isDegree: boolean = getDegree();
-  let checkDegree: string = isDegree ? "Math.cos((Math.PI/180)*" : "Math.cos(";
+  const isDegree: boolean = getDegree();
+  const checkDegree: string = isDegree
+    ? "Math.cos((Math.PI/180)*"
+    : "Math.cos(";
   setAndAddInputStr(checkDegree);
   setAndAddDisplayStr("cos(");
   updateDisplay();
@@ -109,8 +114,10 @@ export function cosine() {
  * @description Handles tangent function calculation with degree or radian mode.
  */
 export function tangent() {
-  let isDegree: boolean = getDegree();
-  let checkDegree: string = isDegree ? "Math.tan((Math.PI/180)*" : "Math.tan(";
+  const isDegree: boolean = getDegree();
+  const checkDegree: string = isDegree
+    ? "Math.tan((Math.PI/180)*"
+    : "Math.tan(";
   setAndAddInputStr(checkDegree);
   setAndAddDisplayStr("tan(");
   updateDisplay();
@@ -166,8 +173,8 @@ export function absoluteValue() {
  */
 export function square() {
   // Remove previous exponent if backspaced
-  let inputStr: string = getInputStr();
-  let displayStr: string = getDisplayStr();
+  const inputStr: string = getInputStr();
+  const displayStr: string = getDisplayStr();
   setInputStr(inputStr.replace(/\*\*3$|\*\*2$/, ""));
   setDisplayStr(displayStr.replace(/[²³]$/, ""));
 
@@ -189,8 +196,8 @@ export function square() {
  * @description Handles value calculation of the input string to the power of 10.
  */
 export function powerOfTen() {
-  let inputStr: string = getInputStr();
-  if (inputStr === "" || /[\+\-\*\/\(]$/.test(inputStr)) {
+  const inputStr: string = getInputStr();
+  if (inputStr === "" || /[+\-*/()]$/.test(inputStr)) {
     setAndAddInputStr("10**");
     setAndAddDisplayStr("10^");
   } else {
@@ -204,7 +211,7 @@ export function powerOfTen() {
  * @description Handles absolute value calculation of the input string to the power of next input string.
  */
 export function xToPowerY() {
-  let inputStr: string = getInputStr();
+  const inputStr: string = getInputStr();
   if (!inputStr.endsWith("**")) {
     setAndAddInputStr("**");
     setAndAddDisplayStr("^");
@@ -216,7 +223,7 @@ export function xToPowerY() {
  * @description Handles constant pie value calculation.
  */
 export function pie() {
-  let inputStr: string = getInputStr();
+  const inputStr: string = getInputStr();
   if (inputStr && !isNaN(Number(inputStr[inputStr.length - 1]))) {
     setAndAddInputStr("*Math.PI");
     setAndAddDisplayStr("*π");
@@ -231,13 +238,13 @@ export function pie() {
  * @description Handles inverse value of the current number in the input string.
  */
 export function inverseValue() {
-  let inputStr: string = getInputStr();
+  const inputStr: string = getInputStr();
   if (typeof inputStr !== "string") setInputStr(inputStr);
-  let match = inputStr.match(/(\d+(\.\d+)?)$/);
+  const match = inputStr.match(/(\d+(\.\d+)?)$/);
   if (match) {
-    let num = Number(match[1]);
-    let inverse = `1/(${num})`;
-    let replacedInputStr = inputStr.replace(/(\d+(\.\d+)?)$/, inverse);
+    const num = Number(match[1]);
+    const inverse = `1/(${num})`;
+    const replacedInputStr = inputStr.replace(/(\d+(\.\d+)?)$/, inverse);
     setInputStr(replacedInputStr);
     setDisplayStr(getInputStr());
   }
@@ -248,7 +255,7 @@ export function inverseValue() {
  * @description Handles Euler's number constant into the input string.
  */
 export function exponent() {
-  let inputStr = getInputStr();
+  const inputStr = getInputStr();
   if (inputStr && !isNaN(Number(inputStr[inputStr.length - 1]))) {
     setAndAddInputStr("*Math.E");
     setAndAddDisplayStr("*e");
@@ -277,7 +284,7 @@ export function factorial(n: number): number {
  * @description Handles factorial operation for the last entered number.
  */
 export function factorialHandler() {
-  let inputStr = getInputStr();
+  const inputStr = getInputStr();
   if (inputStr === "" || isNaN(Number(inputStr[inputStr.length - 1]))) return;
 
   let num = "";
@@ -289,10 +296,10 @@ export function factorialHandler() {
   }
 
   if (num !== "") {
-    let factValue = factorial(Number(num));
+    const factValue = factorial(Number(num));
 
     // Update inputStr to store function call for later evaluation
-    let newInputStr = inputStr.slice(0, i + 1) + factValue;
+    const newInputStr = inputStr.slice(0, i + 1) + factValue;
     setInputStr(newInputStr);
     setAndAddDisplayStr("!");
   }
@@ -304,15 +311,15 @@ export function factorialHandler() {
  * @description Toggles the sign (+/-) of the last number in the input string.
  */
 export function toggleSign() {
-  let inputStr = getInputStr();
+  const inputStr = getInputStr();
   if (inputStr === "") setInputStr("0");
   if (typeof inputStr !== "string") setInputStr(inputStr);
 
-  let match = inputStr.match(/(-?\d+(\.\d+)?)$/);
+  const match = inputStr.match(/(-?\d+(\.\d+)?)$/);
   if (match) {
-    let num = Number(match[1]);
-    let toggled = num * -1;
-    let newInputStr = inputStr.replace(/(-?\d+(\.\d+)?)$/, `${toggled}`);
+    const num = Number(match[1]);
+    const toggled = num * -1;
+    const newInputStr = inputStr.replace(/(-?\d+(\.\d+)?)$/, `${toggled}`);
     setInputStr(newInputStr);
     setDisplayStr(getInputStr());
   }

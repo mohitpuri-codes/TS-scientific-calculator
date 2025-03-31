@@ -33,3 +33,4 @@ export const FACTORIAL = "factorial";
 export const PI = "π";
 export const EXP = "exp";
 export const BACKSPACE_KEY = "Backspace";
+export const CALCULATOR_HISTORY = "calcHistory";
