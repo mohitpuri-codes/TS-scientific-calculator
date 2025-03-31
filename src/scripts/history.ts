@@ -2,7 +2,11 @@
  * @description Retrives calculation history from localStorage or initializes an empty array.
  * @type {string[]}
  */
-let history: string[] = JSON.parse(localStorage.getItem("calcHistory")!) || [];
+const localCalcHistory = localStorage.getItem("calcHistory");
+let history: string[] = [];
+if (localCalcHistory) {
+  history = JSON.parse(localCalcHistory) || [];
+}
 
 // Event listeners
 

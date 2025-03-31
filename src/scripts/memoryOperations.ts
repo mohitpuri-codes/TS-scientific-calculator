@@ -14,9 +14,10 @@ import {
   updateDisplay,
 } from "./main.ts";
 
-document
-  .querySelector(".memory-clear-container")!
-  .addEventListener("click", handleMemoryClick);
+const memoryContainer = document.querySelector(".memory-clear-container");
+if (memoryContainer) {
+  memoryContainer.addEventListener("click", handleMemoryClick);
+}
 
 // Initialize memory from localStorage.
 let memoryStr: string | null = localStorage.getItem(CALCULATOR_MEMORY);
@@ -86,7 +87,7 @@ function memorySaveCurrent() {
 function handleMemoryClick(e: Event) {
   const target = e.target;
   if (target instanceof HTMLElement) {
-    let currentKey = target.closest("button")!.textContent!.trim();
+    let currentKey = target.closest("button")?.textContent!.trim();
     if (!currentKey) return;
 
     switch (currentKey) {
