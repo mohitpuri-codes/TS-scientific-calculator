@@ -1,6 +1,6 @@
-import { ERROR, ERROR_INPUT } from "./constants.ts";
-import { addToHistory } from "./history.ts";
-import { getDegree } from "./degreeFunctionExponent.ts";
+import { ERROR, ERROR_INPUT } from "./constants";
+import { addToHistory } from "./history";
+import { getDegree } from "./degreeFunctionExponent";
 import {
   updateDisplay,
   getDisplayStr,

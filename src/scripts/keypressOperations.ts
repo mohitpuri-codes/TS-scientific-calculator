@@ -6,10 +6,10 @@ import {
   setInputStr,
   setDisplayStr,
   getDisplayStr,
-} from "./main.ts";
+} from "./main";
 
-import { equals } from "./utils.ts";
-import { ERROR, ENTER, EQUAL, BACKSPACE_KEY } from "./constants.ts";
+import { equals } from "./utils";
+import { ERROR, ENTER, EQUAL, BACKSPACE_KEY } from "./constants";
 
 //  Event Listeners.
 /**

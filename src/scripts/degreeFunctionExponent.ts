@@ -1,10 +1,5 @@
-import {
-  setDisplayStr,
-  setInputStr,
-  getInputStr,
-  updateDisplay,
-} from "./main.ts";
-import { DEGREE, FE } from "./constants.ts";
+import { setDisplayStr, setInputStr, getInputStr, updateDisplay } from "./main";
+import { DEGREE, FE } from "./constants";
 
 /**
  * @description Tracks wheather the calculator is in degrees mode(true) or radians mode(false)

@@ -5,14 +5,14 @@ import {
   MEMORY_SUBTRACT,
   MEMORY_SAVE,
   CALCULATOR_MEMORY,
-} from "./constants.ts";
+} from "./constants";
 import {
   setDisplayStr,
   setInputStr,
   getDisplayStr,
   getInputStr,
   updateDisplay,
-} from "./main.ts";
+} from "./main";
 
 const memoryContainer = document.querySelector(".memory-clear-container");
 if (memoryContainer) {

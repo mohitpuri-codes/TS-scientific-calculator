@@ -22,7 +22,7 @@ import {
   SINE,
   SQUARE,
   TAN,
-} from "./constants.ts";
+} from "./constants";
 import {
   equals,
   clearCalc,
@@ -45,8 +45,8 @@ import {
   toggleSign,
   changeMode,
   inverseValue,
-} from "./utils.ts";
-import { toggleExponential } from "./degreeFunctionExponent.ts";
+} from "./utils";
+import { toggleExponential } from "./degreeFunctionExponent";
 let inputStr: string = "";
 let displayStr: string = "";
 const display: HTMLDivElement = document.querySelector(".display")!;
